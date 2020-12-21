@@ -1,2 +1,6 @@
-# java-system-testing
-Repositório da atividade da aula de Automação de testes
+#Atividade System Testing
+Alunos
+
+Camila Marques Belem da Silva
+
+Gabriel Wellington A. dos Santos
