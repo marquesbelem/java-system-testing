@@ -28,9 +28,9 @@ public class NovoProcesso  extends  BasePage  {
 
     public void campoRadio(String idCampo, String valor) {
         if (valor.equals("Sim")) {
-            driver.sendKeys(valor, idCampo + "_s");
+            driver.click(idCampo + "_s");
         } else {
-            driver.sendKeys(valor, idCampo + "_n");
+            driver.click(idCampo + "_n");
         }
     }
 
