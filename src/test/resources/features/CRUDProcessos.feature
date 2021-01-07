@@ -25,6 +25,18 @@ Funcionalidade: CRUD de Processos
     Quando o usuario clicar no botao de salvar
     Então o usuario deveria ver a mensagem "Processo foi criado com sucesso."
 
+  Esquema do Cenario: Selecionar o Processo criado
+    E pegar o codigo do processo salvo
+    E clicar em voltar para Processos
+    Quando clicar em Mostrar no processo que foi criado
+    Então o sistema deve apresentar o valor de processo "<process>"
+    E o valor de Vara "<vara>"
+    E o valor de natureza "<natureza>"
+    E o valor de partes "<partes>"
+    Exemplos:
+      |process  |vara     |natureza|partes|
+      |5         |Vila Prudente |Civil   |Camila X Gabriel|
+
   Cenario: Editar um novo processo - EDITAR
     E o usuario clicar no botao de salvar
     E o usuario clicar no botão voltar

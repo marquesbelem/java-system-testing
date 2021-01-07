@@ -9,14 +9,30 @@ public class DetalheProceso extends  BasePage  {
     }
 
     public String getText(String id) {
-        return  driver.getText(id);
+        return driver.getText(id);
     }
 
     public String getCode() {
-        return  driver.getText("codigo");
+        return driver.getText("codigo");
     }
 
     public void clickVoltar() {
         driver.click(".ls-btn-primary-danger", "css");
+    }
+
+    public String getVara() {
+        return driver.getText("vara");
+    }
+
+    public String getNumeroProcesso() {
+        return driver.getText("numero");
+    }
+
+    public String getNatureza() {
+        return driver.getText("natureza");
+    }
+
+    public String getPartes() {
+        return driver.getText("partes");
     }
 }

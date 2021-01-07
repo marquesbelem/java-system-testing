@@ -112,4 +112,29 @@ public class ProcessosSteps extends BaseSteps {
     public void naoDeveExibirOProcessoNoGrid() {
         listaProcessos.validarProcessoApagado(codigo);
     }
+
+    @Quando("^clicar em Mostrar no processo que foi criado$")
+    public void clicarEmMostrarNoProcessoQueFoiCriado() {
+        listaProcessos.clickMostrarProcesso(codigo);
+    }
+
+    @Então("^o sistema deve apresentar o valor de processo \"([^\"]*)\"$")
+    public void oSistemaDeveApresentarOValorDeProcesso(String arg0) {
+        Assert.assertEquals(arg0, detalheProcesso.getNumeroProcesso());
+    }
+
+    @E("^o valor de Vara \"([^\"]*)\"$")
+    public void oValorDeVara(String arg0) {
+        Assert.assertEquals(arg0, detalheProcesso.getVara());
+    }
+
+    @E("^o valor de natureza \"([^\"]*)\"$")
+    public void oValorDeNatureza(String arg0) {
+        Assert.assertEquals(arg0, detalheProcesso.getNatureza());
+    }
+
+    @E("^o valor de partes \"([^\"]*)\"$")
+    public void oValorDePartes(String arg0) {
+        Assert.assertEquals(arg0, detalheProcesso.getPartes());
+    }
 }
