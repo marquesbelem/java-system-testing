@@ -10,8 +10,8 @@ Funcionalidade: CRUD de Processos
     E  o usuario informar "processo_numero_processo" com o valor igual a "43"
     E  o usuario informar "processo_natureza" com o valor igual a "Civil"
     E  o usuario informar "processo_partes" com o valor igual a "Camila X Gabriel"
-    E  o usuario selecionar "processo_urgente" com o valor igual a "N"
-    E  o usuario escolher "processo_arbitramento_s" com o valor igual a "S"
+    E  o usuario selecionar "processo_urgente" com o valor igual a "Não"
+    E  o usuario escolher "processo_arbitramento_s" com o valor igual a "Sim"
     E  o usuario informar "processo_assistente_social" com o valor igual a "Camila"
     E  o usuario informar "processo_data_entrada" com o valor igual a "15-10-2020"
     E  o usuario informar "processo_data_saida" com o valor igual a "20-10-2020"
@@ -33,4 +33,9 @@ Funcionalidade: CRUD de Processos
     Quando o usuario clicar no botao de salvar na tela de edicao
     Então o usuario deveria ver o valor "Guarda" no campo "natureza"
 
-
+  Cenario: Excluir um processo - EXCLUIR
+    E pegar o codigo do processo salvo
+    E clicar em voltar para Processos
+    Quando clicar em Apagar
+    E clicar em sim no alerta de confirmação
+    Então não deve exibir o processo no grid

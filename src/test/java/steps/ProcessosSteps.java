@@ -18,10 +18,10 @@ public class ProcessosSteps extends BaseSteps {
     private NovoProcesso novoProcesso = new NovoProcesso(driver);
     private DetalheProceso detalheProcesso = new DetalheProceso(driver);
     private EditarProcesso editarProcesso = new EditarProcesso(driver);
+    private String codigo = null;
 
     @Dado("^que o usuario esta na pagina inicial$")
-    public void queOUsuarioEstáNaPáginaInicial()
-    {
+    public void queOUsuarioEstaNaPaginaInicial() {
         homePage.open();
     }
 
@@ -32,8 +32,7 @@ public class ProcessosSteps extends BaseSteps {
     }
 
     @E("^o usuario clica no botao Novo Processo$")
-    public void oUsuarioClicaNoBotãoNovoProcesso()
-    {
+    public void oUsuarioClicaNoBotaoNovoProcesso() {
         listaProcessos.clickNovoProcesso();
     }
 
@@ -45,18 +44,17 @@ public class ProcessosSteps extends BaseSteps {
     }
 
     @Então("^o usuario deveria ver a mensagem \"([^\"]*)\"$")
-    public void oUsuarioDeveriaVerAMensagem(String message) throws Throwable
-    {
+    public void oUsuarioDeveriaVerAMensagem(String message) {
         Assert.assertEquals(message, detalheProcesso.getText("notice"));
     }
 
     @E("^o usuario informar \"([^\"]*)\" com o valor igual a \"([^\"]*)\"$")
-    public void oUsuarioInformarComOValorIgualA(String campo, String valor) throws Throwable {
-        novoProcesso.campoInput(campo,valor);
+    public void oUsuarioInformarComOValorIgualA(String campo, String valor) {
+        novoProcesso.campoInput(campo, valor);
     }
 
     @E("^o usuario clicar no botão voltar$")
-    public void oUsuarioClicarNoBotãoVoltar() {
+    public void oUsuarioClicarNoBotaoVoltar() {
         detalheProcesso.clickVoltar();
     }
 
@@ -66,7 +64,7 @@ public class ProcessosSteps extends BaseSteps {
     }
 
     @E("^o usuario informar \"([^\"]*)\" com o valor igual a \"([^\"]*)\" na tela de edicao$")
-    public void oUsuarioInformarComOValorIgualANaTelaDeEdicao(String campo, String valor) throws Throwable {
+    public void oUsuarioInformarComOValorIgualANaTelaDeEdicao(String campo, String valor) {
         editarProcesso.campoInput(campo, valor);
     }
 
@@ -76,17 +74,42 @@ public class ProcessosSteps extends BaseSteps {
     }
 
     @Então("^o usuario deveria ver o valor \"([^\"]*)\" no campo \"([^\"]*)\"$")
-    public void oUsuarioDeveriaVerOValorNoCampo(String valor, String campo) throws Throwable {
-       Assert.assertEquals(valor, detalheProcesso.getText(campo));
+    public void oUsuarioDeveriaVerOValorNoCampo(String valor, String campo) {
+        Assert.assertEquals(valor, detalheProcesso.getText(campo));
     }
 
     @E("^o usuario selecionar \"([^\"]*)\" com o valor igual a \"([^\"]*)\"$")
-    public void oUsuarioSelecionarComOValorIgualA(String campo, String valor) throws Throwable {
-        novoProcesso.campoSelect(campo,valor);
+    public void oUsuarioSelecionarComOValorIgualA(String campo, String valor) {
+        novoProcesso.campoSelect(campo, valor);
     }
 
     @E("^o usuario escolher \"([^\"]*)\" com o valor igual a \"([^\"]*)\"$")
-    public void oUsuarioEscolherComOValorIgualA(String campo, String valor) throws Throwable {
-        novoProcesso.campoRadio(campo,valor);
+    public void oUsuarioEscolherComOValorIgualA(String campo, String valor) {
+        novoProcesso.campoRadio(campo, valor);
+    }
+
+    @E("^pegar o codigo do processo salvo$")
+    public void pegarOCodigoDoProcessoSalvo() {
+        codigo = detalheProcesso.getCode();
+    }
+
+    @E("^clicar em voltar para Processos$")
+    public void clicarEmVoltarParaProcessos() {
+        detalheProcesso.clickVoltar();
+    }
+
+    @Quando("^clicar em Apagar$")
+    public void clicarEmApagar() {
+        listaProcessos.clickApagarProcesso(codigo);
+    }
+
+    @E("^clicar em sim no alerta de confirmação$")
+    public void clicarEmSimNoAlertaDeConfirmacao() {
+        driver.ChooseOkOnNextConfirmation();
+    }
+
+    @Então("^não deve exibir o processo no grid$")
+    public void naoDeveExibirOProcessoNoGrid() {
+        listaProcessos.validarProcessoApagado(codigo);
     }
 }

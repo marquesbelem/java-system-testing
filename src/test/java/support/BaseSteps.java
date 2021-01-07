@@ -6,7 +6,7 @@ public class BaseSteps {
 
     public BaseSteps(){
         driver.start("chrome");
-//        driver.start("firefox");
+        //driver.start("firefox");
     }
 
 }

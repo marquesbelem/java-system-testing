@@ -2,9 +2,6 @@ package pages;
 
 import support.DriverQA;
 
-/**
- * @author Victor Moraes
- */
 class BasePage {
     final DriverQA driver;
 

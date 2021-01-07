@@ -18,20 +18,19 @@ public class NovoProcesso  extends  BasePage  {
     }
 
     public void campoSelect(String idCampo, String valor) {
-        if(valor == "n" || valor == "N") {
+        if (valor.equals("Não")) {
             driver.selectByIndex(0, idCampo);
-        }
-        else {
+        } else {
             driver.selectByIndex(1, idCampo);
         }
 
     }
 
     public void campoRadio(String idCampo, String valor) {
-        if(valor == "sim" || valor == "Sim" ) {
-            driver.sendKeys(valor, idCampo+"_s");
-        }else{
-            driver.sendKeys(valor, idCampo+"_n");
+        if (valor.equals("Sim")) {
+            driver.sendKeys(valor, idCampo + "_s");
+        } else {
+            driver.sendKeys(valor, idCampo + "_n");
         }
     }
 
